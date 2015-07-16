@@ -1,5 +1,9 @@
 <h1>Signup</h1>
-
+<% if flash[:notice] %>
+<div class="error">
+  <%= flash[:notice] %>
+</div>
+<% end %>
 <%= form_for @user do |f| %>
 
 <p>
@@ -15,6 +19,11 @@
 <p>
   <%= f.label :password %><br>
   <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :confirm_password %><br>
+  <%= f.password_field :confirm_password %>
 </p>
 
 <p>
