@@ -1,0 +1,7 @@
+<h1>Hi, <%= @user.full_name %>!</h1>
+
+<% @user.projects.each do |project| %>
+<div>
+  <%= project.title %>
+</div>
+<% end %>

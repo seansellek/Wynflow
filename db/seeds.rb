@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+u = User.create(full_name: "Test User")
+u.email = "test@wynflow.co"
+u.password = "test"
+u.save
+
+10.times do |i|
+  p = Project.create
+  p.title = "Project #{i}"
+  p.description = "This is a description of project #{i}"
+  p.user = u
+  p.save
+end
