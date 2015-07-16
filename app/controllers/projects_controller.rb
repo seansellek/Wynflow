@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :require_user, only: [:new, :create, :update, :edit, :vote, :destroy]
   def new
     @project = Project.new
   end
