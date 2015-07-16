@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  http_basic_authenticate_with name: "pizzabreathingunicorn", password: "numberone", except:[:index,:show]
   def new
     @project = Project.new
   end
