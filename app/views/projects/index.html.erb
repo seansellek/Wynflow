@@ -8,7 +8,7 @@
       Description
     </th>
   </tr>
-  <% @projects.to_a.sort_by!{|proj| proj.votes || 0}.reverse.each do |project| %>
+  <% @projects.order(:votes).reverse.each do |project| %>
   <tr>
     <td>
       <%= project.title %>
