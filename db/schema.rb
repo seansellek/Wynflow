@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716031653) do
+ActiveRecord::Schema.define(version: 20150716044401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,10 @@ ActiveRecord::Schema.define(version: 20150716031653) do
     t.string   "collab"
     t.integer  "cohort"
     t.integer  "votes"
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -37,4 +40,5 @@ ActiveRecord::Schema.define(version: 20150716031653) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "projects", "users"
 end
