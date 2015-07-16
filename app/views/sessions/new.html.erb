@@ -1,5 +1,9 @@
 <h1>Login</h1>
-
+<% if flash[:notice] %>
+<div class="error">
+  <%= flash[:notice] %>
+</div>
+<% end %>
 <%= form_for(:session, url: login_path) do |f| %>
 <%= f.email_field :email, :placeholder => "Email" %>
 <%= f.password_field :password, :placeholder => "Password" %>

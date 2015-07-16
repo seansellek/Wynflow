@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to projects_path
+    redirect_to user_path current_user
   end
   def vote
     @project = Project.find(params[:id])
