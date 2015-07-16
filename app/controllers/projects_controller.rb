@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  http_basic_authenticate_with name: "pizzabreathingunicorn", password: "numberone", except:[:index,:show]
+  before_action :require_user, only: [:new, :create, :update, :edit, :vote, :destroy]
+  #http_basic_authenticate_with name: "pizzabreathingunicorn", password: "numberone", except:[:index,:show]
   def new
     @project = Project.new
   end
