@@ -24,6 +24,32 @@
   </p>
 
   <p>
+    <%= f.label :repo %><br>
+    <%= f.text_field :repo %>
+  </p>
+
+  <p>
+
+  <%= f.label :url %><br>
+  <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :img %><br>
+    <%=f.text_field :img %>
+
+  </p>
+  <p>
+    <%= f.label :collab %><br>
+    <%=f.text_field :collab %><br>
+    Separate collaborators with commas (,)
+<p>
+
+  <%= f.label :cohort %><br>
+  <%= f.text_field :cohort %><br>
+  Type a number...not something else
+</p>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

@@ -6,4 +6,23 @@
   <strong>Description:</strong>
   <%= @project.description %>
 </p>
+<p>
+  <strong>Repo Link:</strong>
+  <%= @project.repo %>
+</p>
+<p>
+<strong>URL Link</strong>
+<%= @project.url %>
+</p>
+<p>
+  <strong>Collaborators:</strong>
+  <%= @project.collab %>
+</p>
+<img src="<%= @project.img %>">
+
+<p>
+  <strong>Cohort:</strong>
+  <%= @project.cohort %>
+</p>
+
 <%= link_to 'View All', projects_path %>

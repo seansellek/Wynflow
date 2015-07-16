@@ -8,13 +8,19 @@
       Description
     </th>
   </tr>
-  <% @projects.each do |project| %>
+  <% @projects.to_a.sort_by!{|proj| proj.votes || 0}.reverse.each do |project| %>
   <tr>
     <td>
       <%= project.title %>
     </td>
     <td>
       <%= project.description %>
+    </td>
+    <td>
+      <%= project.votes || 0 %>
+    </td>
+    <td>
+      <%= link_to 'Upvote', project_path(project) + '/vote' %>
     </td>
     <td>
       <%= link_to 'Show', project_path(project) %>

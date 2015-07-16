@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  http_basic_authenticate_with name: "pizzabreathingunicorn", password: "numberone", except:[:index,:show]
   def new
     @project = Project.new
   end
@@ -33,10 +34,17 @@ class ProjectsController < ApplicationController
 
     redirect_to projects_path
   end
+  def vote
+    @project = Project.find(params[:id])
+    @project.votes ||= 0
+    @project.votes += 1
+    @project.save
+    redirect_to projects_path
+  end
 
 
   private
   def project_params
-    params.require(:project).permit(:title,:description)
+    params.require(:project).permit(:title,:description,:repo, :url, :img, :collab, :cohort)
   end
 end
