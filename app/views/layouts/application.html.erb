@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Wynflow</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
-<% if current_user %>
-<%=link_to "Log out", logout_path, method: "delete" %>
-<% else %>
-<%= link_to "Login", 'login' %>
-<%= link_to "Signup", 'signup' %>
-<% end %>
+<style>
+  nav {
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+  }
+
+  nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0;
+  }
+
+  nav li {
+    margin: 0px;
+  }
+
+  nav li a {
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    float: left;
+    padding: 0.4em 10em;
+  }
+
+  nav li a:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+  }
+</style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to('Home Page', projects_path) %></li>
+      <li><%= link_to("Profile", user_path(current_user)) if current_user %></li>
+    </ul>
+    <div>
+      <% if current_user %>
+        <%=link_to "Log out", logout_path, method: "delete" %>
+      <% else %>
+        <%= link_to "Login", 'login' %>
+        <%= link_to "Signup", 'signup' %>
+      <% end %>
+    </div>
+  </nav>
+  <hr>
+  <h1>
+    <center>Welcome to Wynflow!</center>
+  </h1>
+  <h2>
+    <center>Where users can view previous Wyncode projects.</center>
+  </h2>
+  <hr>
+
+  <%= yield %>
 
 </body>
+
 </html>

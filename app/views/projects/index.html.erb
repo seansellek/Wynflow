@@ -1,39 +1,42 @@
-<h1>All Projects</h1>
-<table>
-  <tr>
-    <th>
-      Title
-    </th>
-    <th>
-      Description
-    </th>
-  </tr>
-  <% @projects.order(:votes).reverse.each do |project| %>
-  <tr>
-    <td>
-      <%= project.title %>
-    </td>
-    <td>
-      <%= project.description %>
-    </td>
-    <td>
-      <%= project.votes || 0 %>
-    </td>
-    <td>
-      <%= link_to 'Upvote', project_path(project) + '/vote' %>
-    </td>
-    <td>
-      <%= link_to 'Show', project_path(project) %>
-    </td>
-    <td>
-      <%= link_to 'Edit', edit_project_path(project) %>
-    </td>
-    <td>
-      <%= link_to 'Destroy', project_path(project),
-        method: :delete,
-        data: {confirm: 'Are you sure?'}%>
-    </td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to 'New Project', new_project_path %>
+<style type="text/css">
+div
+{
+   border:1px solid;
+}
+.divtable
+{
+    display:table;
+}
+.divrow
+{
+    display:table-row;
+}
+.divcol
+{
+    display:table-cell;
+    width:100px;
+}
+.headrow
+{
+    display:table-caption;
+}
+.content
+{
+    display:table-cell;
+    width:100px;
+}
+</style>
+
+    <% @projects.order(votes: :desc).each do |project| %>
+      <div class="project">
+        <a href="<%=project_path(project)%>"><h3><%= project.title %></h3></a>
+        <p>
+          <%= project.description %>
+        </p>
+        <div class="score">
+          <%= project.votes %>
+          <%= link_to 'Upvote', project_path(project) + '/vote' %>
+        </div>
+      </div>
+      <% end %>
+      <%= link_to 'New Project', new_project_path %>
