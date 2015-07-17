@@ -15,24 +15,23 @@
       <div class="logo">
         <%= link_to("WYNFLOW", projects_path) %>
       </div>
-      <%= "hi! " + current_user.full_name if current_user%>
+      <% if current_user %>
+        <img src="http://www.gravatar.com/avatar/<%= current_user.get_email_hash %>">
+        <span><%= "Hello, " + current_user.full_name + "!" %></span>
+        <% end %>
         <div class="main-menu">
           <ul>
             <li>
-              <%= link_to 'Hot', projects_path %>
+              <%= link_to 'Most Popular', projects_path %>
             </li>
             <li>
-              <%= link_to 'New', projects_path + '/date' %>
+              <%= link_to 'Latest', projects_path + '/date' %>
             </li>
-            <% if current_user %>
-              <li>
-                <%= link_to("My Profile", user_path(current_user)) %>
-              </li>
-              <% end %>
           </ul>
         </div>
         <div class="account">
           <% if current_user %>
+            <%= link_to("My Profile", user_path(current_user), class: 'profile') %>
             <%=link_to "Log out", logout_path, method: "delete", class: 'logout' %>
               <% else %>
                 <a href="/login" class="login">Login</a>

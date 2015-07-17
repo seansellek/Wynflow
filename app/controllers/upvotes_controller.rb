@@ -13,6 +13,7 @@ class UpvotesController < ApplicationController
       proj.votes -= 1
       proj.save
     end
+  
     redirect_to :back
     # unless current_user.upvotes.any? {|upvote| upvote.project = @project }
     #   @vote = Upvote.create
