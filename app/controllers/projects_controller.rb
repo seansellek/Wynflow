@@ -41,7 +41,9 @@ class ProjectsController < ApplicationController
     @project.save
     redirect_to projects_path
   end
-
+  def date
+    @projects = Project.all
+  end
 
   private
   def project_params

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'projects/date' => 'projects#date'
   resources :projects, :users
 
   root 'projects#index'
   get 'projects/:id/vote' => 'projects#vote'
+
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
