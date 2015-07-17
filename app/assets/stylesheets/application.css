@@ -78,3 +78,10 @@ nav {
   background-color: rgba( 194, 216, 107, 0.75 );
   border: 1px rgba( 194, 216, 107, 0.75 ) solid;
 }
+header {
+  text-align: center;
+  color: white;
+}
+header h1 {
+  font-size: 78px;
+}
