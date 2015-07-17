@@ -3,7 +3,7 @@
       <div class="project">
         <div class="score">
           <span><%= project.votes || 0 %></span>
-          <%= link_to 'Upvote', project_path(project) + '/vote' %>
+          <%= link_to 'Upvote',  '/vote/' + project.id.to_s %>
         </div>
         <div class='img'>
           <img src="<%= project.img %>" alt="" />

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'settings/:id' => 'users#settings', as: 'settings'
 
+  # project/:id/vote
+  get 'vote/:project_id' => 'upvotes#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
     # root 'project#index'

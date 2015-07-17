@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716203624) do
+ActiveRecord::Schema.define(version: 20150717153942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20150716203624) do
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
+  create_table "upvotes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "project_id"
+    t.integer  "user_id"
+  end
+
+  add_index "upvotes", ["project_id"], name: "index_upvotes_on_project_id", using: :btree
+  add_index "upvotes", ["user_id"], name: "index_upvotes_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -41,4 +51,6 @@ ActiveRecord::Schema.define(version: 20150716203624) do
   end
 
   add_foreign_key "projects", "users"
+  add_foreign_key "upvotes", "projects"
+  add_foreign_key "upvotes", "users"
 end
