@@ -4,76 +4,49 @@
 <head>
   <title>Wynflow</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Rajdhani:400,700' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
 </head>
-
-<style>
-  nav {
-    list-style: none;
-    font-weight: bold;
-    margin-bottom: 10px;
-    width: 100%;
-    text-align: center;
-    height: 40px;
-  }
-
-  nav ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0;
-  }
-
-  nav li {
-    margin: 0px;
-  }
-
-  nav li a {
-    padding: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    float: left;
-    padding: 0.4em 10em;
-  }
-
-  nav li a:hover {
-    color: #FFFFFF;
-    background-color: #000000;
-  }
-</style>
-</head>
-
 <body>
   <div>
 
 
   <nav>
-    <ul>
-      <li><%= link_to('Home Page', projects_path) %></li>
-      <li><%= link_to("Profile", user_path(current_user)) if current_user %></li>
-       <% if current_user %>
-       <li>
-      <%= "hi! " + current_user.full_name%>
-      </li>
-        <%=link_to "Log out", logout_path, method: "delete" %>
+    <div class="logo">
+      <%= link_to("WYNFLOW", projects_path) %>
+    </div>
+    <%= "hi! " + current_user.full_name if current_user%>
+    <div class="main-menu">
+      <ul>
+        <li><%= link_to 'Hot', projects_path %></li>
+        <li><%= link_to 'New', projects_path + '/date' %></li>
+        <% if current_user %>
+        <li>
+          <%= link_to("My Profile", user_path(current_user)) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="account">
+      <% if current_user %>
+        <%=link_to "Log out", logout_path, method: "delete", class: 'logout' %>
       <% else %>
-        <%= link_to "Login", 'login' %>
-        <%= link_to "Signup", 'signup' %>
+        <a href="/login" class="login">Login</a>
+        <a href="/signup" class="signup">Signup</a>
       <% end %>
       </ul>
     </div>
   </nav>
-  <hr>
-  <h1>
-    <center>Welcome to Wynflow!</center>
-  </h1>
-  <h2>
-    <center>Where users can view previous Wyncode projects.</center>
-  </h2>
-  <hr>
+  <main>
+    <header>
+      <h1><span class='bracket'>&lt;</span><span class='w'>W</span><span class='bracket'>&gt;</span></h1>
+      <p>Wyncode is Florida’s premier full-stack web development bootcamp, one of the first fully-licensed programs of it’s kind. In 9 weeks, students immerse themselves in a project-based learning environment. Here are some of the projects Wyncoders have built during their experience at Wyncode:</p>
+    </header>
+
 
   <%= yield %>
-
+  </main>
 </body>
 
 </html>
