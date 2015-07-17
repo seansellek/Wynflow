@@ -1,17 +1,22 @@
     <% @projects.order(votes: :desc).each do |project| %>
 
       <div class="project">
+        <div class="score">
+          <span><%= project.votes || 0 %></span>
+          <%= link_to 'Upvote', project_path(project) + '/vote' %>
+        </div>
+        <div class='img'>
+          <img src="<%= project.img %>" alt="" />
+        </div>
         <a href="<%=project_path(project)%>"><h3><%= project.title %></h3></a>
 
         <p>
           <%= project.description %>
         </p>
-        <div class="score">
-          <%= project.votes %>
-          <%= link_to 'Upvote', project_path(project) + '/vote' %>
+
+        <div class="links">
+        <%=link_to "Visit App", project.url, class: 'button' %>
+        <%=link_to "See Source", project.repo, class: 'button' %>
         </div>
-        <div class="date_created">
-        <% project.created_at %>
-        <% link_to 'CreateDate', project_path(project) +'/date' %>
       </div>
       <% end %>
