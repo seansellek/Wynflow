@@ -1,32 +1,3 @@
-<style type="text/css">
-div
-{
-   border:1px solid;
-}
-.divtable
-{
-    display:table;
-}
-.divrow
-{
-    display:table-row;
-}
-.divcol
-{
-    display:table-cell;
-    width:100px;
-}
-.headrow
-{
-    display:table-caption;
-}
-.content
-{
-    display:table-cell;
-    width:100px;
-}
-</style>
-
     <% @projects.order(votes: :desc).each do |project| %>
       <div class="project">
         <a href="<%=project_path(project)%>"><h3><%= project.title %></h3></a>
