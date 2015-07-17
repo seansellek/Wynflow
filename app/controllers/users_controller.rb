@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    if user_params[:password] == user_params[:confirm_password]
+    if user_params[:full_name] == "" || user_params[:email] == "" || user_params[:password] == ""
+      flash[:notice] = "Please fill in all fields"
+      redirect_to '/signup'
+    elsif user_params[:password] == user_params[:confirm_password]
       user_info = user_params.except(:confirm_password)
       @user = User.new(user_info)
       if @user.save

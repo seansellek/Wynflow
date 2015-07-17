@@ -44,18 +44,23 @@
 </head>
 
 <body>
+  <div>
+
+
   <nav>
     <ul>
       <li><%= link_to('Home Page', projects_path) %></li>
       <li><%= link_to("Profile", user_path(current_user)) if current_user %></li>
-    </ul>
-    <div>
-      <% if current_user %>
+       <% if current_user %>
+       <li>
+      <%= "hi! " + current_user.full_name%>
+      </li>
         <%=link_to "Log out", logout_path, method: "delete" %>
       <% else %>
         <%= link_to "Login", 'login' %>
         <%= link_to "Signup", 'signup' %>
       <% end %>
+      </ul>
     </div>
   </nav>
   <hr>
