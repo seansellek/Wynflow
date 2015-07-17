@@ -1,8 +1,8 @@
-
-
-
 <h1>Hi, <%= @user.full_name %>!</h1>
-  <%= link_to 'New Project', new_project_path %>
+  <div class="user-options">
+    <%= link_to 'New Project', new_project_path, class: 'button' %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'button' %>
+  </div>
 <% @user.projects.each do |project| %>
 <div class="project">
   <div class="score">

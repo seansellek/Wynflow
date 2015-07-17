@@ -1,3 +1,4 @@
+<h1>Latest Projects</h1>
 <% @projects.order(created_at: :desc).each do |project| %>
 <%= render partial: 'project', locals: {project: project} %>
 <% end %>

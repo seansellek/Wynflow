@@ -1,7 +1,7 @@
 <div class="project">
-  <div class="score">
+  <div class="score <%= 'voted' if current_user.has_upvoted?(project) %>">
     <span><%= project.votes || 0 %></span>
-    <%= link_to 'Upvote',  '/vote/' + project.id.to_s %>
+    <%= link_to 'Upvote',  '/vote/' + project.id.to_s%>
   </div>
   <div class='img'>
     <img src="<%= project.img %>" alt="" />

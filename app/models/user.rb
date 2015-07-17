@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
     email.strip!
     Digest::MD5.hexdigest(email)
   end
+
+  def has_upvoted? project
+    self.upvotes.any?{|v| v.project_id == project.id }
+  end
 end
