@@ -1,6 +1,7 @@
 class UpvotesController < ApplicationController
   def create
     # @project = Project.find(params[:project_id])
+    redirect_to '/login' unless current_user
     @upvote = current_user.upvotes.new(project_id: params[:project_id])
 
     if @upvote.save
@@ -13,7 +14,7 @@ class UpvotesController < ApplicationController
       proj.votes -= 1
       proj.save
     end
-  
+
     redirect_to :back
     # unless current_user.upvotes.any? {|upvote| upvote.project = @project }
     #   @vote = Upvote.create
