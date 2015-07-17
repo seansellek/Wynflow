@@ -25,9 +25,17 @@ div
     display:table-cell;
     width:100px;
 }
+
+/*.logged_user {
+
+  text-align: center;
+}*/
 </style>
 
+
+
     <% @projects.order(votes: :desc).each do |project| %>
+
       <div class="project">
         <a href="<%=project_path(project)%>"><h3><%= project.title %></h3></a>
 
